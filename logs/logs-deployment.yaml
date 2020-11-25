@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+        name: logs
+spec:
+        replicas: 1
+        selector:
+                matchLabels:
+                        app: rest-server
+        template:
+                metadata:
+                        labels:
+                                app: rest-server
+                spec:
+                        containers:
+                        - name: logs
+                          image: ihammes/logs:v1
+                          imagePullPolicy: Always

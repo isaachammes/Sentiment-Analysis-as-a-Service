@@ -1,0 +1,7 @@
+FROM dirkcgrunwald/facerec
+
+RUN pip3 install --upgrade pika redis jsonpickle requests pymysql
+
+COPY worker-server.py /
+
+CMD python3 worker-server.py
