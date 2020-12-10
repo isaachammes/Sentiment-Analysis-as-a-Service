@@ -18,5 +18,6 @@ COPY topic_model1.model.expElogbeta.npy /
 COPY topic_model1.model.id2word /
 COPY topic_model1.model.state /
 COPY topic_model1.model.state.sstats.npy /
-
+COPY sentiment.py /
+COPY preprocessing.py /
 CMD python3 worker-server.py
