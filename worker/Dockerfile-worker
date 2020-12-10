@@ -1,6 +1,7 @@
-FROM dirkcgrunwald/facerec
+FROM python:3.9-alpine
 
-RUN pip3 install --upgrade pika redis jsonpickle requests pymysql
+RUN pip3 install --upgrade pika redis jsonpickle requests pymysql pandas numpy matplotlib.pyplot seaborn sklearn re nltk gensim spacy operator
+RUN
 
 COPY worker-server.py /
 
