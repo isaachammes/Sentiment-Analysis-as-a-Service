@@ -1,0 +1,28 @@
+FROM ubuntu:20.04
+
+RUN	DEBIAN_FRONTEND=noninteractive apt-get update -y && \
+	apt-get install -yq --no-install-recommends \
+	   git python3 python3-pip curl
+
+RUN pip3 install --upgrade numpy pandas pika redis jsonpickle requests pymysql matplotlib seaborn scikit-learn nltk spacy spacy-lookups-data joblib scipy gensim
+RUN python3 -m nltk.downloader punkt
+RUN python3 -m spacy download en_core_web_sm
+RUN python3 -m nltk.downloader stopwords
+
+COPY worker-server.py /
+
+COPY emoticon_dictionary1.pkl /
+COPY lr_sentiment1.joblib /
+COPY tfidf_sentiment.dictionary /
+COPY tfidf_sentiment.model /
+COPY topic_identification.py /
+COPY topic_dictionary.pkl /
+COPY tfidf.dictionary /
+COPY topic_model1.model /
+COPY topic_model1.model.expElogbeta.npy /
+COPY topic_model1.model.id2word /
+COPY topic_model1.model.state /
+COPY topic_model1.model.state.sstats.npy /
+COPY sentiment.py /
+COPY preprocessing.py /
+CMD python3 worker-server.py
