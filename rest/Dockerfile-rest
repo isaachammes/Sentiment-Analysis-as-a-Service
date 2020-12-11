@@ -1,9 +1,0 @@
-FROM python:3.9-alpine
-
-RUN pip3 install --upgrade pika redis jsonpickle requests flask pymysql
-
-COPY rest-server.py /
-
-EXPOSE 5000
-
-CMD python3 rest-server.py
