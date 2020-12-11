@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+</head>
+<body style="background-color: black;">
+    <h1 style="color: white; margin: auto; width: 50%; padding: 10px">Sentiment Analysis Results</h1>
+    <div style="margin: auto; width: 50%; border: 3px solid aqua; padding: 10px; background-color: darkblue;">
+        <div style="background-color: white; padding: 2px;">
+            <p>Document: {{ document }}</p>
+            <p>Topic: {{ topic }}</p>
+            <p>Sentiment: {{ sentiment }}</p>
+        </div>
+        <br>
+        <form action="/" method="GET">
+            <input type="submit" value="Analyze Another Document" style="background-color: white; color: black;">
+        </form>
+        <form action="/summary" method="GET">
+            <input type="submit" value="View Summary of All Documents" style="background-color: white; color: black;">
+        </form>
+        <form action="" method="POST">
+            <input type="submit" value="Analysis is Incorrect" style="background-color: white; color: black;">
+        </form>
+    </div>
+</body>
+</html>

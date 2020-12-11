@@ -1,0 +1,23 @@
+FROM ihammes/worker:v1
+
+RUN pip3 install --upgrade pika redis jsonpickle requests flask pymysql
+
+RUN mkdir /app
+RUN mkdir /app/templates
+
+COPY model_update.py /app/
+COPY rest-server.py /app/
+COPY sentiment.py /app/
+COPY preprocessing.py /app/
+COPY tfidf.dictionary /app/
+COPY emoticon_dictionary1.pkl /app/
+COPY lr_sentiment1.joblib /app/
+COPY tfidf_sentiment.dictionary /app/
+COPY tfidf_sentiment.model /app/
+COPY templates /app/templates
+
+WORKDIR /app
+
+EXPOSE 5000
+
+CMD python3 rest-server.py
